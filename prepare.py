@@ -303,7 +303,7 @@ def visualize(path: str):
     ax.invert_yaxis()
     ax = axes[1][0]
     bars = ax.barh(pids, div, color=c["d"], edgecolor="white")
-    ax.set_xlim(0, max(div) * 1.3 if div else 1)
+    ax.set_xlim(0, max(max(div) * 1.3, 0.01) if div else 1)
     ax.set_title("div_score (combined)")
     ax.invert_yaxis()
     for bar, v in zip(bars, div):

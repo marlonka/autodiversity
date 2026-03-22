@@ -69,6 +69,8 @@ def generate_one(client: anthropic.Anthropic, prompt: str) -> str:
     }
     # Sampling params: pass only what's configured.
     # temperature and top_p are mutually exclusive per the API.
+    if "temperature" in CONFIG and "top_p" in CONFIG:
+        raise ValueError("temperature and top_p cannot both be set in CONFIG")
     if "temperature" in CONFIG:
         kwargs["temperature"] = CONFIG["temperature"]
     if "top_p" in CONFIG:
